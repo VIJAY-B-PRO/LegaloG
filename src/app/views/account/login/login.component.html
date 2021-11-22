@@ -1,0 +1,85 @@
+<div>
+  <mat-grid-list class="login" cols="2" rowHeight="2:1.8" fxLayoutAlign="center
+    center">
+    <mat-grid-tile>
+
+      <h1>Logo view LegaloG</h1>
+
+    </mat-grid-tile>
+    <mat-grid-tile>
+      <div fxLayoutAlign="center center" fxFlexFill>
+        <mat-card fxFlex="80">
+          <mat-toolbar fxLayout="center center" color="primary">Welcome</mat-toolbar>
+          <br>
+          <form [formGroup]="signupForm" class="example-form" fxLayout="column"
+            (ngSubmit)="onSumbit()">
+            <mat-form-field appearance="outline">
+              <mat-label>Email</mat-label>
+              <input formControlName="email" matInput placeholder="Enter a email" required>
+              <mat-icon matSuffix>mail_outline</mat-icon>
+
+              <mat-error *ngIf="this.signupForm.get('email').invalid && this.signupForm.get('email').dirty">Enter a valid email </mat-error> 
+
+             
+              <mat-error *ngIf="this.signupForm.get('email').pristine">
+                Enter a Email                             
+              </mat-error>
+              <mat-error *ngIf="erroremail && this.signupForm.get('email').invalid "> Email is not found</mat-error> 
+
+               
+            </mat-form-field>
+
+
+
+            <mat-form-field appearance="outline">
+              <mat-label>Password</mat-label>
+              <input formControlName="password" matInput [type]="hide ?
+                'password' : 'text'" required>
+              <button mat-icon-button matSuffix (click)="hide= !hide"
+                [attr.aria-label]="'Hide password'"
+                [attr.aria-pressed]="hide">
+                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+              </button>
+              <!-- <mat-error *ngIf="this.signupForm.get('password').invalid &&
+                this.signupForm.get('password').touched">Password does not match</mat-error> -->
+
+              <mat-error *ngIf="this.signupForm.get('password').pristine">
+                Enter a password                               
+              </mat-error>
+             
+               <!-- <mat-error *ngIf="this.signupForm.get('password').invalid && this.signupForm.get('email').invalid &&  this.signupForm.get('email') &&  this.signupForm.get('password')">
+               
+              </mat-error> -->
+
+            </mat-form-field>
+
+            <a fxLayoutAlign="end" routerLink="#" class="forgot-password-link">Forgot
+              Password ?</a>
+            <button mat-raised-button [disabled]="signupForm.invalid"  type="submit" color="primary">Login</button>
+            <br>
+
+            <span fxLayoutAlign="center">Need an Account ? <a class="newaccount"
+                routerLink="#">SignUp</a></span>
+
+          </form>
+
+        </mat-card>
+      </div>
+
+
+    </mat-grid-tile>
+
+  </mat-grid-list>
+
+</div>
+
+
+
+<!-- <mat-form-field appearance="fill">
+  <mat-label>Enter your password</mat-label>
+  <input matInput [type]="hide ? 'password' : 'text'">
+  <button mat-icon-button matSuffix (click)="hide= !hide"
+    [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+    <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+  </button>
+</mat-form-field> -->
